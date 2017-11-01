@@ -15,7 +15,7 @@
 <ul>
   {{#each burger}}
     {{#if devoured}}
-      <p>{{this.burger_name}}</p>
+      <button class="burger-btn" id={{this.id}}>{{this.burger_name}}</button>
     {{/if}}
   {{/each}}
 </ul>
@@ -30,9 +30,54 @@
       <textarea id ="add-burger">
         
       </textarea>
-     <button type="submit" id="add">Add Burger</button>
+     <button id="add">Add Burger</button>
     </div>
   </form>
 
 
-  <button type="submit" id="devour">Devour it!!</button>
+  {{!-- <button type="submit" id="devour">Devour it!!</button> --}}
+
+<script type="text/javascript">
+   
+   $("#add").on("click", function(event) {
+    // Make sure to preventDefault on a submit event.
+    console.log("Button Click");
+    event.preventDefault();
+    console.log(event);
+    var newBurger = {
+      burger_name: $("#add-burger").val().trim(),
+      devoured: false,
+      burger_date: Date.now(),
+    };
+    console.log(newBurger);
+    // Send the POST request.
+    $.ajax("/burger/create", {
+      type: "POST",
+      data: newBurger
+    }).then(
+      function() {
+
+        console.log("created new burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+  });
+
+   $(".burger-btn").on("click", function(event) {
+    console.log("burger is clicked");
+        // $.ajax("/burger/update/:id", {
+        //   type:"POST",
+        //   date: newBurger
+        // }).then(
+        //   function() {
+        //     console.log("Update Burger");
+        //     location.reload();
+
+        //   }
+        // );
+
+   })
+
+
+</script>

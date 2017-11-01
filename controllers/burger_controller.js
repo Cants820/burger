@@ -11,7 +11,7 @@ router.get("/", function(req, res) {
     var hbsObject = {
       burger: data
     };
-    console.log(hbsObject);
+    // console.log(hbsObject);
     res.render("index", hbsObject);
   });
 });
@@ -24,21 +24,26 @@ router.get("/", function(req, res) {
 //   });
 // });
 router.post("/burger/create", function(req, res) {
+  console.log("post method");
   Burger.create([//syntax are from the orm
-    "burger_name", "devoured","burger_date"
+    "burger_name"
   ], [
-    req.body.burger_name, req.body.devoured, req.body.burger_date
+    req.body.burger_name
   ],function(result) {
-    console.log(result);
-    console.log("Created a burger");    
+    // console.log(result);
+    // console.log("Created a burger");    
     res.json({ id: result.insertId });
   });
 });
-// router.put("burger/update", function(req,res){
-//   Burger.update(function {
+router.put("burger/update/:id", function(req,res){
+    
+    console.log("Update Devoured");
 
-//   })
-// })
+    var devoured = "id = " + req.params.id;
+
+ 
+  
+})
 
 
 

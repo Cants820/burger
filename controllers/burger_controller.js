@@ -35,15 +35,42 @@ router.post("/burger/create", function(req, res) {
     res.json({ id: result.insertId });
   });
 });
-router.put("burger/update/:id", function(req,res){
-    
-    console.log("Update Devoured");
 
-    var devoured = "id = " + req.params.id;
+router.put("/burger/update/:id", function(req,res){
+    console.log("Update Post Hit");
 
- 
-  
-})
+      // console.log(req);
+    // console.log("Your hitting me " + isDevoured);
+      var devourState= 1;
+     var condition= req.params.id;
+     // console.log(burgerId);
+     console.log(devourState);
+   Burger.update({
+     devoured: 1
+    }), condition, function(result) {
+      // res.redirect("/");
+      console.log("req.body.devoured", req.body.devoured);
+      console.log("successful update");
+      // if (result.changedRows == 0) {
+      //   return res.status(404).end();
+      // } else {
+      //   res.status(200).end();
+      // }
+   }
+});
+
+router.delete("burger/delete/:id", function(req,res){
+  var condition = "id = " + req.params.id;
+
+  Burger.delete(condition, function(result) {
+      if (result.affectedRows == 0){
+        return res.status(404).end();
+      } else {
+        res.status(200).end();
+      }
+  });
+
+});
 
 
 

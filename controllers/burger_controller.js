@@ -15,14 +15,6 @@ router.get("/", function(req, res) {
     res.render("index", hbsObject);
   });
 });
-// //create a burger
-// router.post("/burger/create", function(req,res) {
-//   console.log(req.body);
-//   Burger.create(req.body.burger_name,function(results) {
-//       console.log("Created a burger!!")
-//       res.json(req.body.burger_name);
-//   });
-// });
 router.post("/burger/create", function(req, res) {
   console.log("post method");
   Burger.create([//syntax are from the orm
@@ -42,12 +34,14 @@ router.put("/burger/update/:id", function(req,res){
       // console.log(req);
     // console.log("Your hitting me " + isDevoured);
       var devourState= 1;
-     var condition= req.params.id;
-     // console.log(burgerId);
+     var condition =  req.params.id;
+     
+     console.log("condition",condition);
      console.log(devourState);
+     
    Burger.update({
      devoured: 1
-    }), condition, function(result) {
+    }, condition), function() {
       // res.redirect("/");
       console.log("req.body.devoured", req.body.devoured);
       console.log("successful update");
@@ -59,7 +53,7 @@ router.put("/burger/update/:id", function(req,res){
    }
 });
 
-router.delete("burger/delete/:id", function(req,res){
+router.delete("/burger/delete/:id", function(req,res){
   var condition = "id = " + req.params.id;
 
   Burger.delete(condition, function(result) {
@@ -71,8 +65,6 @@ router.delete("burger/delete/:id", function(req,res){
   });
 
 });
-
-
 
 // Export routes for server.js to use.
 module.exports = router;

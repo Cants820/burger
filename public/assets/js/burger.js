@@ -35,16 +35,16 @@ $(function(){
 
         var devouredState = {
           id: id,
-          devoured: devouredState
+          devoured: devouredState,
 
-        }
+        };
+
         console.log("burger is clicked");
         
             $.ajax("/burger/update/"+ id , {
                type:"PUT",
                data: devouredState     
-            }).then(
-              function() {
+            }).then(function() {
                 console.log("Update Burger");
                 location.reload();
 
@@ -54,18 +54,18 @@ $(function(){
     });
 
 
-    $("#delete").on("click", function(event) {
+    $(".delete").on("click", function(event) {
 
-      var id = $(this).data("id"); //stores event id
+      var id = $(this).attr("id"); //stores event id
 
       console.log("Button Click");
       event.preventDefault(); //prevents the page from being reload since button behavior refreshes page
 
-      $.ajax("burger/delete/" + id, {
+      $.ajax("/burger/delete/" + id, {
         type: "DELETE",
       }).then(
         function(){
-          console.log("deleted cat", id);
+          console.log("burger has been eaten id:", id);
           location.reload();
         }
       )

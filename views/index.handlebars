@@ -7,20 +7,24 @@
     <div class="row">
 
       <div class="col-md-6 col-xs-6">
+        
+
         <ul>
           {{#each burger}}
             {{#unless devoured}}
-            <button class="burger-btn" id={{this.id}} data-state={{this.devoured}}>{{this.burger_name}}</button>
+            <button class="burger-btn" id={{this.id}} data-state={{this.devoured}}>{{this.burger_name}}<img alt="burger" src="assets/img/burger.jpg" width="100px" height="100px"></button>
             {{/unless}}
           {{/each}}
         </ul>
       </div>
 
       <div class="col-md-6 col-xs-6">
+        
+
         <ul>
           {{#each burger}}
             {{#if devoured}}
-              <button class="delete" id={{this.id}} data-state={{this.devoured}}>{{this.burger_name}}</button>
+              <button class="delete" id={{this.id}} data-state={{this.devoured}}>{{this.burger_name}}<img alt="devoured burger" src="assets/img/devoured.jpg" width="100px" height="100px"></button>
             {{/if}}
           {{/each}}
         </ul>
@@ -35,10 +39,12 @@
             <form class="create-burger">{{!-- listens to the form --}}
             <h2>Add a Burger</h2>
                 <div class="form-group">
-                  <label for="ca">Burger Name:</label>
-                  <textarea id ="add-burger">
+                  <br>
+                  <label for="ca">Burger Name:</label><br>
+                  <textarea id ="add-burger"  rows="4" cols="25">
                     
                   </textarea>
+                  <br>
                  <button id="add">Add Burger</button>
                 </div>
 

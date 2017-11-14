@@ -78,13 +78,12 @@ var orm = {
     queryString += objToSql(objColVals);
     queryString += " WHERE id=";
     queryString += condition;
-     console.log("condition",condition);
+     console.log("condition in orm",condition);
     console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-
       cb(result);
     });
   },

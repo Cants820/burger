@@ -41,7 +41,7 @@ router.put("/burger/update/:id", function(req,res){
      
    Burger.update({
      devoured: 1
-    }, condition), function() {
+    }, condition, function(data) {
       // res.redirect("/");
       console.log("req.body.devoured", req.body.devoured);
       console.log("successful update");
@@ -50,7 +50,9 @@ router.put("/burger/update/:id", function(req,res){
       // } else {
       //   res.status(200).end();
       // }
-   }
+      console.log(data);
+      res.json(data);
+   })
 });
 
 router.delete("/burger/delete/:id", function(req,res){

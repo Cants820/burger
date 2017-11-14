@@ -44,10 +44,12 @@ $(function(){
             $.ajax("/burger/update/"+ id , {
                type:"PUT",
                data: devouredState     
-            }).then(function() {
-                console.log("Update Burger");
+            }).done(function(result) {
+                console.log("Update Burger1");
+                
                 location.reload();
-
+                console.log("Update Burger2");
+                
               }
             );
 
@@ -63,7 +65,7 @@ $(function(){
 
       $.ajax("/burger/delete/" + id, {
         type: "DELETE",
-      }).then(
+      }).done(
         function(){
           console.log("burger has been eaten id:", id);
           location.reload();

@@ -2,5 +2,17 @@
 
 body{
   background-color: orange;
+
 }
 
+img {
+  background-image: url("../img/burger.jpg");
+  background-color:blue;
+  
+}
+
+
+textarea {
+  background-color: #FF6347;
+  opacity: .8;
+}
